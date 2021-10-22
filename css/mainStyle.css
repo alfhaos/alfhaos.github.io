@@ -1,0 +1,99 @@
+body{
+    background-color: lightgray;
+   
+}
+.user-box{
+    text-align: right;
+}
+.wrap{
+    position:relative;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    color: white;
+}
+
+.material-icons{
+    font-size: 10rem;
+}
+
+.lg-text{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom:10px;
+}
+
+
+.card-Myself{
+    display: inline-block;
+    text-align: center;
+    margin-right: 100px;
+}
+.card-hobby{
+    display: inline-block;
+    text-align: center;
+    margin-right: 200px;
+}
+
+.card-roadmap{
+    display: inline-block;
+    text-align: center;
+    margin-right: 100px;
+
+}
+
+.card-signup{
+    display: inline-block;
+    text-align: center;
+}
+
+
+.card-Myself img{
+    width: 200px;
+    height: 150px;
+    border-radius: 50px;
+    object-fit: scale-down;
+}
+
+.card-hobby img{
+    width: 200px;
+    height: 150px;
+    border-radius: 50px;
+    object-fit: scale-down;
+}
+.card-signup img{
+    width: 200px;
+    height: 150px;
+    border-radius: 50px;
+    object-fit: scale-down;
+}
+.card-roadmap img{
+    width: 200px;
+    height: 150px;
+    border-radius: 50px;
+    object-fit: scale-down;
+}
+
+.cardheader{
+    
+    width: 250px;
+    height: 175px;
+}
+.pageList-card-wrap{
+    text-align: center;
+}
+.card-body > span{
+    position: relative;
+    bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.pageList-card-wrap > div{
+    position: relative;
+    opacity: 0.8;
+    background-color: whitesmoke;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px 5px gray;
+    margin-top: 100px;
+}

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="../04_jquery/js/jquery-3.6.0.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Game Record</title>
+
+        <!-- 외부 style sheet를 연결하기 -->
+        <link rel="stylesheet" href="./css/style.css">
+
+
+</head>
+<body>
+    
+    <!------------------------------------------------------------------------------nav 부분 시작 ------------------------------------------------------------------>
+    <header>
+        <nav id = "mainNav">
+            <div class="menu">
+                <span id = "title">Game Record</span>
+                <ul id = "topmenu">
+                    <li id = "home"><a href ="#overallrank">인기게임</a></li>
+                    <!-- <li id = "category"><a href ="#sectionCategory">카테고리</a></li> -->
+                    <li id = "rank"><a href ="#rank">순위</a></li>
+                    <li id = "search"><a href ="http://172.30.1.60:5500/JeongHanByeol/landing.html">홈</a></li>
+                </ul>
+            
+            </div>
+        </nav>
+    </header>
+
+    <!------------------------------------------------------------------------------section-overallrank 부분 시작 ------------------------------------------------------------------>
+
+
+    <section id = "overallrank">
+        <div class="rankwrapper">
+            <div class="beforerank">
+                <img src="./image/before1.png" alt="" id = "beforerankimg">
+
+            </div>
+       
+            <div id ="rankwrap">
+                <div id = "toprank">
+                    <a href="https://www.leagueoflegends.com/ko-kr/"><img src="./image/League_of_Legends.png" alt="" id = "rank1"></a>
+                    <span id = "rank1title">1.리그오브레전드</span>
+
+                    <a href="https://diablo2.blizzard.com/ko-kr/"><img src="./image/DIABLO2.png" alt="" id = "rank2"></a>
+                    <span id = "rank2title">2.디아블로 2</span>
+
+                    <a href="https://lostark.game.onstove.com/Main"><img src="./image/Lost_Ark.png" alt="" id = "rank3"></a>
+                    <span id = "rank3title">3.로스트아크</span>
+                </div>
+
+                <div id = "NextToprank">
+                    <a href="https://playvalorant.com/ko-kr/"><img src="./image/Valorant.png" alt="" id = "rank7"></a>
+                    <span id = "rank7title">7.발로란트</span>
+
+                    <a href="https://playoverwatch.com/ko-kr/"><img src="./image/OVERWATCH.png" alt="" id = "rank8"></a>
+                    <span id = "rank8title">8.오버워치</span>
+
+                    <a href="https://maplestory.nexon.com/Home/Main"><img src="./image/MapleStory.png" alt="" id = "rank9"></a>
+                    <span id = "rank9title">9.메이플스토리</span>
+                </div>
+
+                
+
+                <div id = "bottomrank">
+                    <a href="https://sa.nexon.com/main/index.aspx"><img src="./image/SuddenAttack.png" alt="" id = "rank4"></a>
+                    <span id = "rank4title">4.서든어택</span>
+
+                    <a href="https://www.krafton.com/games/battlegrounds/"><img src="./image/Player_Unknowns_Battle_Grounds.png" alt="" id = "rank5"></a>
+                    <span id = "rank5title">5.배틀그라운드</span>
+
+                    <a href="https://fifaonline4.nexon.com/main/index"><img src="./image/FIFA_ONLINE4.png" alt="" id = "rank6"></a>
+                    <span id = "rank6title">6.피파 온라인4</span>
+
+                </div>
+
+                <div id = "NextBottomrank">
+                    <a href="https://aion.plaync.com/update/history/2021/211013_update"><img src="./image/Aion.png" alt="" id = "rank10"></a>
+                    <span id = "rank10title">10.아이온</span>
+
+                    <a href="https://starcraft.com/ko-kr/"><img src="./image/StarCraft_Remastered.png" alt="" id = "rank11"></a>
+                    <span id = "rank11title">11.스타크래프트</span>
+
+                    <a href="http://df.nexon.com/df/home"><img src="./image/Dungeon_Fighter.png" alt="" id = "rank12"></a>
+                    <span id = "rank12title">12.던전앤파이터</span>
+                </div>
+
+
+            </div>
+
+
+            <div class="nextrank">
+                <img src="./image/next1.png" alt="" id = "nextrankimg">
+
+            </div>
+
+        </div>
+
+        <script>
+
+            $(".nextrank").hover(() => {
+
+                $("#nextrankimg").attr("src","./image/next2.png" );
+                $(".nextrank").css("background-color","#E0E0E0");
+                $(".nextrank").animate({
+                    opacity : 0.5  
+                },1000);
+                
+                
+            }, () => {
+                $("#nextrankimg").attr("src","./image/next1.png" );
+                $(".nextrank").css("background-color","white");
+
+                $(".nextrank").animate({
+                    opacity : 1  
+                },1000);
+            });
+
+
+            $(".beforerank").hover(() => {
+
+                $("#beforerankimg").attr("src","./image/before2.png" );
+                $(".beforerank").css("background-color","#E0E0E0");
+                $(".beforerank").animate({
+                    opacity : 0.5  
+                },1000);
+                
+                
+            }, () => {
+                $("#beforerankimg").attr("src","./image/before1.png" );
+                $(".beforerank").css("background-color","white");
+
+                $(".beforerank").animate({
+                    opacity : 1  
+                },1000);
+            });
+
+
+            $(".nextrank").click((e) => {
+
+                $("#rankwrap > #toprank").children().animate({
+                    
+                    opacity : 0
+                },1000,function(){
+                    $("#toprank").css("display","none");
+                    $("#NextToprank").css("display","block");
+
+
+                });
+
+                $("#rankwrap > #bottomrank").children().animate({
+                    opacity : 0
+                },1000,function(){
+                    $("#bottomrank").css("display","none");
+                    $("#NextBottomrank").css("display","block");
+                    
+
+                    $(".nextrank").css("display","none");
+                    $(".beforerank").css("display","block");
+                })
+
+            });
+
+            $(".beforerank").click((e) => {
+
+                $("#rankwrap > #NextToprank").children().animate({
+                    opacity : 0
+                },1000,function(){
+
+                    $("#toprank").css("display","block");
+                    $("#toprank").children().animate({
+                        opacity : 1
+                    },1000)
+                    $("#NextToprank").css("display","none");
+
+
+                });
+
+                $("#rankwrap > #NextBottomrank").children().animate({
+                    opacity : 0
+                },1000,function(){
+                    $("#bottomrank").css("display","block");
+                    $("#bottomrank").children().animate({
+                        opacity: 1
+                    },1000);
+                    $("#NextBottomrank").css("display","none");
+                    
+
+                    $(".nextrank").css("display","block");
+                    $(".beforerank").css("display","none");
+                })
+
+            });
+
+         
+
+
+
+        </script>
+
+
+    </section>
+
+<!------------------------------------------------------------------------------section-category시작 ------------------------------------------------------------------>
+    <!-- <section id = "sectionCategory">
+       <div class="categorywrap">
+            <h2>게임 카테고리</h2>
+            <div class="cardwrap">
+                <div class="card-fps">
+                    <div class="cardheader">FPS</div>
+                    <div class="card-fps-body"></div>
+                </div>
+                <div class="card-rpg">
+                    <div class="cardheader">RPG</div>
+                    <div class="card-rpg-body"></div>
+                </div>
+
+                <div class="card-sports">
+                    <div class="cardheader">스포츠</div>
+                    <div class="card-sports-body"></div>
+                </div>
+
+                <div class="card-arcade">
+                    <div class="cardheader">아케이드</div>
+                    <div class="card-sports-body"></div>
+                </div>
+
+                <div class="card-morbile">
+                    <div class="cardheader">모바일</div>
+                    <div class="card-sports-body"></div>
+                </div>
+
+            </div>
+
+
+       </div>
+
+
+    </section>
+ -->
+
+<!------------------------------------------------------------------------------section-tablerank 부분 시작 ------------------------------------------------------------------>
+
+<section id = "sectionRankTable">
+
+    
+
+    <div class="ranking-Table-Wrapper">
+        
+        <div class="ranking-Table-Wrap">
+            <div class="rankTalbe-date">
+                <h3>2021.09.22~09.28 기준</h3>
+                
+                <select name="standardDate" id="standardDate">
+                    <option value="third">09.22~09.28</option>
+                    <option value="first">10.06-10.12</option>
+                    <option value="second">09.29~10.05</option>
+                    
+      
+                </select>
+            </div>
+            
+            <table class = "ranking-table">
+                <thead>
+                    <tr class="ranking-table-header">
+                        <th>순위</th>
+                        <th colspan="2">게임명</th>
+                        <th>정보보기</th>
+                    </tr>
+
+                </thead>
+                
+                <tbody>
+                    <tr class="ranking-table-rows">
+                        <td id = "ranking-table-rank1">1</td>
+                        <td><img src="./image/League_of_Legends.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>리그 오브 레전드</span>
+                            <div class="game-info">
+                                <span>라이엇게임즈</span>
+                                 | 
+                                <span>AOS</span>
+                                <span>부분유료화</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="material-icons">
+                            add_circle_outline
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr class="ranking-table-rows">
+                        <td id = "ranking-table-rank2">2</td>
+                        <td><img src="./image/Lost_Ark.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>로스트아크</span>
+                            <div class="game-info">
+                                <span>스마일게이트 RPG</span>
+                                 | 
+                                <span>MMORPG</span>
+                                <span>부분유료화</span>
+                            </div>
+                        </td>
+                        <td><span class="material-icons">
+                            add_circle_outline
+                            </span>
+                        </td>
+                    </tr>
+    
+                    <tr class="ranking-table-rows">
+                        <td id = "ranking-table-rank3">3</td>
+                        <td><img src="./image/DIABLO2.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>디아블로 2</span>
+                            <div class="game-info">
+                                <span>블리자드</span>
+                                 | 
+                                <span>액션 RPG</span>
+                                <span></span>
+                            </div>
+                        </td>
+                        <td><span class="material-icons">
+                            add_circle_outline
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr class="ranking-table-rows">
+                        <td>4</td>
+                        <td><img src="./image/Player_Unknowns_Battle_Grounds.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>배틀그라운드</span>
+                            <div class="game-info">
+                                <span>크래프톤</span>
+                                 | 
+                                <span>FPS</span>
+                                <span>부분유료화</span>
+                            </div>
+                        </td>
+                        <td><span class="material-icons">
+                            add_circle_outline
+                            </span>
+                        </td>
+                    </tr>
+    
+                    <tr class="ranking-table-rows">
+                        <td>5</td>
+                        <td><img src="./image/FIFA_ONLINE4.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>피파 온라인4</span>
+                            <div class="game-info">
+                                <span>EA코리아 스튜디오</span>
+                                 | 
+                                <span>스포츠</span>
+                                <span>부분유료화</span>
+                            </div>
+                        </td>
+
+                        <td id = "ranking-Info-Open">
+                            <span class="material-icons">
+                            add_circle_outline
+                            </span></td>
+
+                    </tr>
+    
+                    <tr class="ranking-table-rows">
+                        <td>6</td>
+                        <td><img src="./image/SuddenAttack.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>서든어택</span>
+                            <div class="game-info">
+                                <span>넥슨지티</span>
+                                 | 
+                                <span>FPS</span>
+                                <span>부분유료화</span>
+                            </div>
+                        </td>
+                        <td><span class="material-icons">
+                            add_circle_outline
+                            </span>
+                        </td>
+                    </tr>
+    
+                    
+    
+                    
+
+                    <tr class="ranking-table-rows">
+                        <td>7</td>
+                        <td><img src="./image/OVERWATCH.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>오버워치</span>
+                            <div class="game-info">
+                                <span>블리자드</span>
+                                 | 
+                                <span>FPS</span>
+                                <span>부분유료화</span>
+                            </div>
+                        </td>
+
+                        <td id = "ranking-Info-Open">
+                            <span class="material-icons">
+                            add_circle_outline
+                            </span></td>
+
+                    </tr>
+
+                    <tr class="ranking-table-rows">
+                        <td>8</td>
+                        <td><img src="./image/Valorant.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>발로란트</span>
+                            <div class="game-info">
+                                <span>라이엇게임즈</span>
+                                 | 
+                                <span>FPS</span>
+                                <span>무료</span>
+                            </div>
+                        </td>
+
+                        <td id = "ranking-Info-Open">
+                            <span class="material-icons">
+                            add_circle_outline
+                            </span></td>
+
+                    </tr>
+
+                    <tr class="ranking-table-rows">
+                        <td>9</td>
+                        <td><img src="./image/MapleStory.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>메이플스토리</span>
+                            <div class="game-info">
+                                <span>위젯스튜디오</span>
+                                 | 
+                                <span>MMORPG</span>
+                                <span>부분유료화</span>
+                            </div>
+                        </td>
+
+                        <td id = "ranking-Info-Open">
+                            <span class="material-icons">
+                            add_circle_outline
+                            </span></td>
+
+                    </tr>
+
+                    <tr class="ranking-table-rows">
+                        <td>10</td>
+                        <td><img src="./image/Aion.png" alt=""></td>
+                        <td class = "game-name">
+                            <span>아이온 : 영원의 탑</span>
+                            <div class="game-info">
+                                <span>엔씨소프트</span>
+                                 | 
+                                <span>MMORPG</span>
+                                <span>정액제</span>
+                            </div>
+                        </td>
+
+                        <td id = "ranking-Info-Open">
+                            <span class="material-icons">
+                            add_circle_outline
+                            </span></td>
+
+                    </tr>
+                </tbody>
+                
+            </table>
+
+            
+        </div>
+        
+        <div class="ranking-Info-Right">
+            <div class="Info-Title">
+                <h2>에이펙스 레전드</h2>
+            </div>
+
+            <ul class="Info-Ul">
+                <li>장르 : AOS</li>
+                <br>
+                <li>제작 : 라이엇게임즈</li>
+                <br>
+                <li>제공 : 라이엇게임즈코리아</li>
+                <br>
+                <li>등급 : 12세</li>
+                <br>
+                <li>출시 : 2009.10.27</li>
+            </ul>
+
+            <img src="../sample/image/tiger.jpg" alt="">
+
+        </div>
+    </div>
+
+
+
+
+</section>
+
+<script>
+    $(document).ready(function(){
+        divchange = false;
+
+        $("#ranking-Info-Open").click(() => {
+            if(divchange){
+                divchange = false;
+                $(".ranking-Info-Right").css("display","inline-block");
+            }
+            else{
+                divchange = true;
+                $(".ranking-Info-Right").css("display","none");
+            }
+        });
+    })
+
+    $("#standardDate").change(function(){
+        let select = $("#standardDate option:selected").val();
+
+        if(select == "first"){
+            location.href="http://172.30.1.60:5500/JeongHanByeol/GameRecord.html";
+        }
+        else if (select == "second"){
+            location.href="http://172.30.1.60:5500/JeongHanByeol/GameRecord-second.html";
+        }
+
+    })
+   
+</script>
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

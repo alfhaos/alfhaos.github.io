@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./css/signup.css">
+    <script src="../04_jquery/js/jquery-3.6.0.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="singup-wrapper">
+        <div class="signup-title">
+            <span class="material-icons" id = "title-icon">
+                https
+            </span>
+            <h2 class = "title-text"> signup / login</h2>
+        </div>
+
+        <div class="signup-select">
+            <div class="signup-btn">
+                <span class "signup-text">회원가입</span>
+            </div>
+
+            <div class="login-btn">
+                <span class "login-text">로그인</span>
+            </div>
+
+
+            <div class="input-signup">
+                <form action="javascript:saveMemberInfo();">
+                    <span class="span-name">이름</span>
+                    <br>
+                    <input type="text" id = "name" height="50">
+                    <br>
+                    <span class="span-id">아이디</span>
+                    <br>
+                    <input type="text" id = "id">
+                    <br>
+                    <span class="span-pwd">비밀번호</span>
+                    <br>
+                    <input type="text" id = "password">
+                    <br>
+                    <br>
+                    <div class="submit" id = "submit">회원가입</div>
+
+                    
+                </form>
+                
+            </div>
+
+            <div class="input-login">
+              
+                <span class = "span-login-id">아이디</span>
+                <br>
+                <input type="text" id = "login-id">
+                <br>
+                <span class = "span-login-pwd">비밀번호</span>
+                <br>
+                <input type="text" id = "login-password">
+                <br>
+                <br>
+                <div class="login" id = "login">로그인</div>
+                <div class="show-member">회원 목록 보기</div>
+
+                <div class="member-table-wrap">
+                    <table id = "member-table">
+                        <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>아이디</th>
+                            </tr>
+                        </thead>
+                        
+
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                    
+            </div>
+        </div>
+
+
+       
+    </div>
+
+
+
+    <script>
+
+        $("#title-icon").click(() => {
+            location.href = "http://172.30.1.60:5500/JeongHanByeol/landing.html";
+        });
+
+
+        $(".signup-btn").hover(() => {
+
+            $(".signup-btn").css("background-color","whitesmoke").animate({
+                right: "-3px",
+                bottom : "-7px"
+                },200)
+            }, function(){
+            $(".signup-btn").css("background-color","white").animate({
+                right: "3px",
+                bottom : "7px"
+                
+            },200)
+
+        });
+
+        $(".login-btn").hover(() => {
+            $(".login-btn").css("background-color","whitesmoke").animate({
+                right: "-3px",
+                bottom : "-7px"
+                },200)
+
+
+        }, function(){
+            $(".login-btn").css("background-color","white").animate({
+                right: "3px",
+                bottom : "7px"
+                
+            },200)
+        })
+
+
+        //로그인-----------------------------------------------------------------------------------
+        let loginchecked = false;
+        let username = null;
+
+        $("#login").click(() => {
+            const inputId = $("#login-id").val();
+            const inputPwd = $("#login-password").val();
+
+            const local = localStorage.getItem("memberInfo");
+            const info = JSON.parse(local);
+
+            console.log(info);
+
+            $.each(info, function(i,ele){
+                    if(inputId == ele.id && inputPwd == ele.password){
+                        loginchecked = true;
+                        username = ele.name;
+                    }
+                });
+            
+            if(loginchecked){
+                alert("로그인성공");
+                location.href = "http://172.30.1.60:5500/JeongHanByeol/landing.html";
+
+                const check = new LoginCheck(loginchecked,username);
+                localStorage.removeItem("checkLocal")
+                checkLocal = JSON.parse(localStorage.getItem("checkLocal")) || [];
+                checkLocal.push(check);
+
+                localStorage.setItem("checkLocal",JSON.stringify(checkLocal));
+
+
+                console.log(localStorage.getItem("checkLocal"));
+
+                $(".signup-btn").css("display","inline-block");
+                $(".login-btn").css("display","inline-block");
+                $(".input-signup").css("display","none");
+                $(".input-login").css("display","none");
+
+
+            }
+            else{
+                const check = new LoginCheck(loginchecked,username);
+                localStorage.removeItem("checkLocal")
+                checkLocal = JSON.parse(localStorage.getItem("checkLocal")) || [];
+                checkLocal.push(check);
+
+                localStorage.setItem("checkLocal",JSON.stringify(checkLocal));
+
+
+                console.log(localStorage.getItem("checkLocal"));
+                alert("로그인실패");
+            }
+
+        })
+
+        
+       
+         // 회원 목록 출력------------------------------------------------------------------------------
+        
+        const displayMember = () => {
+            const local = localStorage.getItem("memberInfo");
+            const info = JSON.parse(local);
+
+            
+            const length = $(info).length;
+
+            console.log(info);
+
+            $.each(info, function(i,ele){
+                $("tbody").append($(`
+                    <tr id = "m"><td>${ele.name}</td>
+                    <td>${ele.id}</td></tr>`));
+                    
+                });
+
+            };
+        let boo = true;
+        $(".show-member").click(() => {
+              $(".member-table-wrap").toggle(100,function(){
+                if(boo){
+                    console.log($("tbody").children())
+                    $("tr").remove("#m")
+                    boo = false;
+                }
+                else{
+                    boo = true;
+                }
+                 
+              });
+              displayMember();
+              
+          })
+
+        
+         // 회원가입------------------------------------------------------------------------------
+        const saveMemberInfo = () => {
+            const $name = $("#name");
+            const $id = $("#id");
+            const $password = $("#password");
+            
+            if($name.val() == "" || $password.val() == "")
+                return;
+
+            // 1. 사용자 입력값을 Guestbook 객채 생성
+            const minfo = new MemberInfo($name.val(), $id.val(), $password.val());
+
+
+            // 2. localStorage에 추가
+            memberInfo = JSON.parse(localStorage.getItem("memberInfo")) || [];
+            memberInfo.push(minfo);
+
+           
+            //console.log(memberInfo);
+
+            localStorage.setItem("memberInfo",JSON.stringify(memberInfo));
+
+            
+            // 3. 초기화
+            $name.val('');
+            $id.val('');
+            $password.val('');
+
+
+            alert("회원가입 성공!");
+            $(".signup-btn").css("display","inline-block");
+            $(".login-btn").css("display","inline-block");
+            $(".input-signup").css("display","none");
+
+        
+    };
+
+        
+    class MemberInfo {
+        constructor(name, id, password){
+            this.name = name;
+            this.id = id;
+            this.password = password;
+        }
+    }
+
+    class LoginCheck{
+        constructor(checked,name){
+            this.checked = checked;
+            this.name = name;
+           
+        }
+    }
+
+    $(".submit").click(() => {
+        $("form").submit();
+    })
+
+
+    $(".signup-btn").click(() => {
+        $(".signup-btn").css("display","none");
+        $(".login-btn").css("display","none");
+        $(".input-login").css("display","none");
+        $(".input-signup").css("display","block");
+    });
+
+    $(".login-btn").click(() => {
+        
+        $(".signup-btn").css("display","none");
+        $(".login-btn").css("display","none");
+        $(".input-signup").css("display","none");
+        $(".input-login").css("display","block");
+    });
+
+    // hover 효과------------------------------------------------------------------------------------------------------------------
+
+    $(".submit").hover(() => {
+        $(".submit").css("background-color","darkslateblue");
+        $(".submit").css("color","white");
+        $(".submit").css("border","2px solid white");
+        $(".submit").css("cursor","pointer");
+
+    }, function(){
+        $(".submit").css("background-color","white");
+        $(".submit").css("color","darkslateblue");
+    })
+
+
+    $(".login").hover(() => {
+        $(".login").css("background-color","darkslateblue");
+        $(".login").css("color","white");
+        $(".login").css("border","2px solid white");
+        $(".login").css("cursor","pointer");
+
+    }, function(){
+        $(".login").css("background-color","white");
+        $(".login").css("color","darkslateblue");
+    })
+
+    $(".show-member").hover(() => {
+        $(".show-member").css("background-color","darkslateblue");
+        $(".show-member").css("color","white");
+        $(".show-member").css("border","2px solid white");
+        $(".show-member").css("cursor","pointer");
+
+    }, function(){
+        $(".show-member").css("background-color","white");
+        $(".show-member").css("color","darkslateblue");
+    })
+
+
+
+    </script>
+</body>
+</html>

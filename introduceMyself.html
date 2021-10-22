@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../04_jquery/js/jquery-3.6.0.js"></script>
+    <script src="../04_jquery/js/jquery.easing.1.3.js"></script>
+
+
+     <!-- 외부 style sheet를 연결하기 -->
+     <link rel="stylesheet" href="./css/introduceMyself.css">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <div class = "first-wrap">
+        <br><br>
+        <div class = "first">
+            <h1 id = "first-title">자기소개</h1>
+            <h2 id = "h2">성결대학교 정보통신공학부 4학년 재학중인 정한별입니다.</h2>
+            
+            <p>
+            <h3 id = "h4">현재 KH정보교육원에서 실시중인</h3> 
+            <h3 id = "h4-2">스마트 콘텐츠와 웹 융합 응용 SW개발자 양성과정 수강중에 있습니다.</h3>
+        </p>
+        </div>
+    </div>
+
+    <div class="second">
+        <img src="./image/hobby0.png" alt="">
+
+        <div class="list">
+            <h2>나의 취미</h2>
+            
+            <ol>
+                
+                <h3><li>스키장</li></h3>
+                <br><br>
+                <h3><li>게임</li></h3>
+                <br><br>
+                <h3><li>요리</li></h3>
+            </ol>
+        </div>
+    </div>
+
+    <div class = "third">
+        <br><br>
+        <h1 id = "third-title">스노우보드</h1>
+        <h2 id = "third-h2">매년 겨울철 친구들과 스키장에가는것을 즐겨합니다</h2>
+        
+        <p>
+            <h3 id = "third-h3">스노우보드를 취미로 하게된지 5년정도 되었습니다</h3> 
+            <h3 id = "third-h3-2">독학으로 연습중이라 실력이 향상이 느립니다.</h3>
+        </p>
+    
+       
+    </div>
+
+    <div class="forth-wrap">
+        <div class = "forth"></div>
+            <p class="lg-text">게임</p>
+            <p id = "forth-title" class="lg-text"></p>
+            <br>
+            <p id = "forth-content" class="lg-text2"></p>
+
+    </div>
+
+    <div class = "fifth-wrap">
+        <div class="fifth">
+            <h1 id = "fifth-title">요리</h1>
+            <h2 id = "h2">코로나이후 집에 있는 시간이 늘면서 자연스럽게 생긴 취미입니다.</h2>
+            <p>
+                <h3 id = "h4">배달음식 시키기엔 부담스러워 하나둘씩 요리를 시작했습니다</h3> 
+                <h3 id = "h4-2">맛있는 요리가 되었을때 뿌듯함을 느끼게하는 취미입니다.</h3>
+            </p>
+        </div>
+      
+    </div>
+
+
+
+    <script>
+        let section = 0;
+
+         // 스크롤 함수-------------------------------------------------------------------------------------------
+        $(window).scroll(function(){
+            var scrollValue = $(document).scrollTop();
+            
+            console.log(scrollValue)
+
+            if(section == 0 && (scrollValue >= 800 && scrollValue <= 850)){
+                
+                $("#third-title").animate({
+                    opacity: 1,
+                    right : "400px"
+                },1500,function(){
+                    $("#third-h3").animate({
+                        opacity: 1,
+                        marginRight : "430px"
+                    },1500)
+
+                });
+
+                $("#third-h2").animate({
+                    opacity: 1,
+                    right : "200px"
+                    
+                },1500,function(){
+                    $("#third-h3-2").animate({
+                        opacity: 1,
+                        right : "375px"
+                    },1500)
+                });
+                section++;
+            }
+            else if(section == 1 && (scrollValue >= 1500 && scrollValue <= 1600)){
+                // 게임 부분 타이핑 함수-------------------------------------------------------------------
+                section++;
+                let target = document.querySelector("#forth-title");
+                let stringArr = ["게임","시간적 여유가 있을때 항상 다양한 게임들을 즐겨합니다"
+                                    ,"저에게 있어 가장 중요한 취미 생활입니다."];
+
+                let selectString = stringArr[1];
+                let selectString2 = stringArr[2];
+            
+                let selectStringArr = selectString.split("");
+                let selectStringArr2 = selectString2.split("");
+                let count = 0;
+                let boolean = true; 
+            
+                function dynamic(){
+                    if(count == 0){
+                        if(selectStringArr.length > 0){
+                            target.textContent += selectStringArr.shift();
+                            //console.log(randomArr)
+                            setTimeout(function(){
+                                dynamic(selectStringArr)
+                            },80);
+                        }
+                        else{
+                            target.classList.add("active");
+                            target = document.querySelector("#forth-content");
+                            boolean = false;
+                            count++;
+                            dynamic();
+                        }
+
+                    }
+                    else if(count == 1){
+                        
+                        if(selectStringArr2.length > 0){
+                            target.textContent += selectStringArr2.shift();
+                            //console.log(selectStringArr2)
+                            setTimeout(function(){
+                                dynamic(selectStringArr2)
+                            },80);
+                        }
+                    }
+                
+                }
+                dynamic();
+
+                // 커서 깜빡임 효과
+                function blink(){
+                    if(boolean == true){
+                        target.classList.toggle("active");
+                        
+                    }
+                    else{
+                        // 변경된타켓
+                        target.classList.toggle("active");
+                    }
+
+                }
+
+
+                setInterval(blink, 500);
+            }
+
+
+            else if(section == 2 && (scrollValue >= 2200 && scrollValue <= 2400)){
+                
+            // 요리 부분 애니메이션---------------------------------------------------
+                $(".fifth").animate({
+                    top:"250px"
+                },2000,"easeOutBounce")
+
+            }
+        })
+
+
+
+        // 자기소개 시작------------------------------------------------------------------------------------
+        $(document).ready(function(){
+            $(".first").animate({
+                opacity : 1
+            },3500);
+
+        });
+        
+        
+    </script>
+
+ 
+  
+</body>
+</html>

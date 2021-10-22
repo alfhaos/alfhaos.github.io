@@ -1,0 +1,441 @@
+header {
+    background-color: lightgray;
+    opacity: 0.7;    /*투명도 설정*/
+    position: sticky;
+    top: -30px;
+    padding-top: 30px;
+    z-index: 9999;
+    
+}
+span#title{
+    display: inline-block;
+    text-align: center;
+    padding-top: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+div.menu{
+   height: 100px;
+}
+ul#topmenu{
+    display: inline-block;
+    list-style: none;
+    text-align: left;
+    padding-top: 5px;
+    float: right;
+    
+}
+ul#topmenu li{
+    text-align: center;
+    margin: 5px;
+    background-color: #c9c9c9;
+    border-right: 1px #818181 soild;
+    box-shadow: 1px 1px 8px #bbb;
+    float: right;
+    
+    
+}
+ul#topmenu li a {
+   
+    width: 100px;
+    display: block;
+    padding : .8em .5em;
+    text-decoration: none;
+    color: #292929;
+
+}
+
+ul#topmenu li:hover{
+    background-color: #333;
+
+}
+ul#topmenu li:hover a{
+    background-color: #fff;
+    
+}
+ul#topmenu > li:first-child{
+    border-top-left-radius: .5em;
+    border-bottom-left-radius: .5em;
+}
+
+ul.menu > li:last-child{
+    border-top-right-radius: .5em;
+    border-bottom-right-radius: .5em;
+    border:0;
+}
+div.rankwrapper{
+    
+    display: flex;
+}
+
+div.nextrank{
+    width: 100px;
+    display: block;
+    
+}
+div.beforerank{
+    width: 100px;
+    display: none;
+}
+
+div#rankwrap{
+    
+    width: 1400px;
+    height: 600px;
+    text-align: center;
+    z-index: 5;
+}
+div#toprank{
+    height: 300px;
+    text-align: center;
+    
+}
+
+div#NextToprank{
+    height: 300px;
+    text-align: center;
+    display: none;
+    
+}
+
+div#bottomrank{
+    height: 300px;
+    text-align: center;
+    
+}
+
+div#NextBottomrank{
+    height: 300px;
+    text-align: center;
+    display: none;
+    
+}
+
+div#rankwrap img{
+    width: 236px;
+    height: 175px;
+    border-radius: 50px;
+    z-index: 5;
+
+    box-shadow: 10px 10px 20px gray;
+}
+
+img#rank1{
+    position: relative;
+    left: 50px;
+    
+    
+}
+
+img#rank2{
+    position: relative;
+    margin-top: 50px;
+    margin-left: 150px;
+    
+}
+
+img#rank3{
+    position: relative;
+    left:100px;
+}
+
+img#rank7{
+    position: relative;
+    left: 50px;
+    
+}
+
+img#rank8{
+    position: relative;
+    margin-top: 50px;
+    margin-left: 150px;
+    
+}
+
+img#rank9{
+    position: relative;
+    left:100px;
+}
+
+div.nextrank > img{
+   
+    position: relative;
+    top: 250px;
+    left: 10px;
+    width : 80px;
+    height: 80px;
+}
+div.beforerank > img{
+    position: relative;
+    top: 250px;
+    left: 10px;
+    width : 80px;
+    height: 80px;
+}
+
+
+div#rankwrap span{
+    position: relative;
+    font-weight: bold;
+}
+div#rankwrap span#rank1title{
+    top: 30px;
+    right: 150px;
+}
+div#rankwrap span#rank2title{
+    top: 30px;
+    right: 180px;
+}
+div#rankwrap span#rank3title{
+    top: 30px;
+    right: 80px;
+}
+
+div#rankwrap span#rank7title{
+    top: 30px;
+    right: 120px;
+    
+}
+div#rankwrap span#rank8title{
+    top: 30px;
+    right: 170px;
+}
+div#rankwrap span#rank9title{
+    top: 30px;
+    right: 80px;
+}
+
+div#rankwrap > div#bottomrank > span#rank4title{
+    top: 30px;
+    right: 100px;
+}
+div#rankwrap > div#bottomrank > span#rank5title{
+    top: 30px;
+    right: 180px;
+}
+div#rankwrap > div#bottomrank > span#rank6title{
+    top: 30px;
+    right: 100px;
+}
+
+div#rankwrap > div#NextBottomrank > span#rank10title{
+    top: 30px;
+    right: 70px;
+}
+div#rankwrap > div#NextBottomrank > span#rank11title{
+    top: 30px;
+    right: 180px;
+}
+div#rankwrap > div#NextBottomrank > span#rank12title{
+    top: 30px;
+    right: 120px;
+}
+
+img#rank4{
+    position: relative;
+    left: 80px;
+}
+
+img#rank5{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 230px;
+
+}
+
+img#rank6{
+    position: relative;
+    left:80px;
+}
+
+img#rank10{
+    position: relative;
+    left: 100px;
+}
+
+img#rank11{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 210px;
+
+}
+
+img#rank12{
+    position: relative;
+    left:60px;
+}
+
+
+
+
+
+
+/* ------------------------------------------------ 인기순위 스타일 끝---------------------------------------------------------------- */
+
+
+
+
+div.cardwrap{
+    display: flex;
+}
+div.categorywrap h2{
+    display: inline-block;
+    height: 50px;
+    background-color: yellow;
+    position: relative;
+}
+div.card-morbile{
+    margin-left: 100px;
+    margin-top: 100px;
+}
+div.card-arcade{
+    margin-left: 100px;
+    margin-top: 100px;
+}
+div.card-sports{
+    margin-left: 100px;
+    margin-top: 100px;
+}
+div.card-rpg{
+    margin-left: 100px;
+    margin-top: 100px;
+}
+div.card-fps{
+    margin-left: 20px;
+    margin-top: 100px;
+}
+div.categorywrap > div > div {
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+    background-color: white;
+    border: 1px solid black;
+
+    
+}
+div.cardheader{
+    text-align: right;
+    font-size: 25px;
+    padding-top: 15px;
+    padding-right: 20px;
+    
+}
+
+div.categorywrap{
+    background-color: lightpink;
+    text-align: center;
+    height: 600px;
+    justify-content: center;
+    position: static;
+}
+
+/* ------------------------------------------------ 카테고리 끝------------------------------------------------------------------------- */
+
+
+
+.ranking-table{
+    border-collapse: collapse;
+}
+.ranking-table-rows:first-child{
+    border-top: 1px solid #94DACF;
+}
+.ranking-table-rows {
+    border-bottom: 1px solid #E6E6E6;
+    height: 76px;
+}
+
+div.rankTalbe-date{
+    text-align: left;
+}
+
+div.rankTalbe-date > #standardDate > option{
+    text-align: left;
+    margin-right: 100px;
+    padding: 0px 2px 1px;
+}
+
+div.rankTalbe-date > #standardDate{
+    text-align: center;
+    width: 113px;
+    height: 32px;
+    margin-left: 212px;
+}
+
+div.rankTalbe-date > h3{
+    display: inline-block;
+    margin-left: 10px;
+}
+div.ranking-Table-Wrapper{
+    height: 600px;
+    text-align: center;
+    
+    
+}
+div.ranking-Table-Wrap{
+    width: 550px;
+    height: 600px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 200px;
+}
+div.ranking-Info-Right{
+    width: 450px;
+    height: 300px;
+    border: 2px solid lime;
+    display: none;
+    position: relative;
+    bottom: 200px;
+    right: 100px;
+
+}
+div.Info-Title{
+    text-align: left;
+    margin-left: 20px;
+    width: 410px;
+    height: 50px;
+    border-bottom: 2px solid lightgray;
+
+}
+.Info-Ul{
+    text-align: left;
+    list-style: none;
+    margin-left: -50px;
+    display: inline-block;
+    width: 250px;
+    height: 200px;
+}
+div.ranking-Info-Right > img{
+    width: 140px;
+    height: 185px;
+}
+
+
+
+table{
+    display: inline-block;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+td > img{
+    width: 75px;
+    height: 45px;
+}
+td.game-name{
+    text-align: left;
+    width: 300px;
+}
+.game-info > span{
+    font-size: 10px;
+    color: gray;
+}
+
+#ranking-table-rank1{
+    color: red;
+}
+#ranking-table-rank2{
+    color: red;
+}
+#ranking-table-rank3{
+    color: red;
+}
